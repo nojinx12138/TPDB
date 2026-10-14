@@ -1,18 +1,5 @@
 #!/usr/bin/env python3
-"""Frozen pretrained language model + MLP benchmark runner.
-
-Covered README models:
-  15. ESM2 frozen embedding + MLP
-  16. ProtBERT frozen embedding + MLP
-  17. DPLM frozen embedding + MLP
-  18. ChemBERTa frozen embedding + MLP
-  19. PepDoRA frozen embedding + MLP
-  20. PeptideCLM frozen embedding + MLP
-
-Pretrained encoders are frozen. Only the downstream MLP is trained.
-Class imbalance is handled only during MLP training via BCEWithLogitsLoss(pos_weight),
-calculated from the source train split.
-"""
+"""Pretrained embedding and MLP benchmark models."""
 
 from __future__ import annotations
 

@@ -59,7 +59,7 @@ def main():
             for cwd,cmd in commands(a.experiment,group,seed,a.dataset_root,a.output_root,a.python):
                 print(json.dumps({'cwd':str(cwd),'CUDA_VISIBLE_DEVICES':gpu,'argv':cmd,'execute':a.execute}),flush=True)
                 if a.execute:
-                    if shutil.disk_usage(a.output_root).free<50*1024**3:raise SystemExit('PAUSED_LOW_DISK: less than 50 GiB; progress preserved')
+                    if shutil.disk_usage(a.output_root).free<50*1024**3:raise SystemExit('PAUSED_LOW_DISK: less than 50 GiB')
                     subprocess.run(cmd,cwd=cwd,env=env,check=True)
 
 if __name__=='__main__':main()

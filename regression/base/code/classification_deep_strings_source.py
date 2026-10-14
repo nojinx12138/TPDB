@@ -1,19 +1,5 @@
 #!/usr/bin/env python3
-"""Raw FASTA/SMILES deep string models for the peptide benchmark.
-
-Covered README models:
-  7. CNN-FASTA
-  8. CNN-SMILES
-  9. BiLSTM-FASTA
-  10. BiLSTM-SMILES
-  11. CNN-BiLSTM-FASTA
-  12. CNN-BiLSTM-SMILES
-  13. Transformer encoder-FASTA
-  14. Transformer encoder-SMILES
-
-Class imbalance is handled only during training via BCEWithLogitsLoss(pos_weight),
-calculated from the source train split.
-"""
+"""FASTA and SMILES deep-learning benchmark models."""
 
 from __future__ import annotations
 

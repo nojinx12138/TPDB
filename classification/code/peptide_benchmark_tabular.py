@@ -1,18 +1,5 @@
 #!/usr/bin/env python3
-"""Tabular model runner for the peptide benchmark.
-
-Covered README models:
-  1. RF + 427-dimensional sequence features
-  2. XGBoost + 427-dimensional sequence features
-  3. LightGBM + 427-dimensional sequence features
-  4. RF + ECFP4-count
-  5. XGBoost + ECFP4-count
-  6. LightGBM + ECFP4-count
-
-Class imbalance is handled only during training:
-  RF/LightGBM use class_weight="balanced";
-  XGBoost uses scale_pos_weight=n_negative/n_positive from the source train split.
-"""
+"""Tabular peptide benchmark models."""
 
 from __future__ import annotations
 

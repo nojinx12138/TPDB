@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Materialize a read-only-audited SMILES view of the existing Half-life split."""
+"""Convert Half-life sequences to canonical SMILES."""
 from __future__ import annotations
 
 import argparse

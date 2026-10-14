@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit the 65 new runs and publish a read-only merge with the 195-run baseline."""
+"""Validate and merge Half-life SMILES regression results."""
 from __future__ import annotations
 
 import argparse

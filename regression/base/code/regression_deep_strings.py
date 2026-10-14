@@ -84,7 +84,7 @@ def main() -> None:
     parser.add_argument("--dataset-root", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--checkpoint-root", type=Path, required=True)
-    parser.add_argument("--cache-dir", type=Path, default=None, help="Accepted for a uniform runner interface; deep strings use no feature cache")
+    parser.add_argument("--cache-dir", type=Path, default=None, help="Reserved cache directory")
     parser.add_argument("--tasks", default="all")
     parser.add_argument("--models", default="all")
     parser.add_argument("--seed", type=int, default=0)

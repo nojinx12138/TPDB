@@ -27,7 +27,7 @@ def _validate_split(split_method: str, split_id: str) -> None:
 
 
 def split_path(root: Path, method: str, split_method: str, activity: str, split_id: str, split: str) -> Path:
-    """Resolve immutable homology-split train/validation data."""
+    """Resolve homology-split training and validation paths."""
     _validate_split(split_method, split_id)
     if split not in {"train", "valid"}:
         raise ValueError(f"split_path only accepts train/valid, got {split!r}")
@@ -38,7 +38,7 @@ def split_path(root: Path, method: str, split_method: str, activity: str, split_
 
 
 def test_split_path(root: Path, source_method: str, target_method: str, split_method: str, activity: str, split_id: str) -> Path:
-    """Resolve A/B/C test data; all four training sources share the same targets."""
+    """Resolve target test paths."""
     _validate_split(split_method, split_id)
     if source_method not in TRAIN_METHODS:
         raise ValueError(f"Unknown training method: {source_method}")
@@ -99,7 +99,7 @@ def available_activities(root: Path) -> list[str]:
 
 
 def iter_dataset_paths(root: Path) -> Iterator[tuple[str, str, str, Path]]:
-    """Yield method, activity, logical split, immutable source path."""
+    """Yield source method, activity, split and file path."""
     for activity in available_activities(root):
         for method in TRAIN_METHODS:
             code = DATASET_CODE[method]
@@ -118,7 +118,7 @@ def file_sha256(path: Path) -> str:
 
 
 def verify_embedded_tests(root: Path) -> list[dict[str, object]]:
-    """Compatibility name: verify the 69 shared A/B/C target tests and source PASS report."""
+    """Verify target test files and the data validation report."""
     report = root / "validation_report.csv"
     if not report.is_file():
         raise FileNotFoundError(f"Missing source validation report: {report}")

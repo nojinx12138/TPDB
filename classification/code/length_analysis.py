@@ -322,7 +322,7 @@ def main() -> None:
     validation = pd.concat([validation, pd.DataFrame([{"check": "VALIDATION", "status": overall_status, "expected": "PASS", "actual": overall_status, "details": ""}])], ignore_index=True)
     atomic_csv(validation, analysis / "length_analysis_validation_report.csv")
 
-    print("Similarity split confirmed: homology_30 (not random split)")
+    print("Split method: homology_30")
     print("Prediction source: saved test predictions")
     print(f"coverage schemes={len(TEST_METHODS)}/3 activities={len(activities)}/{len(activities)} models={len(unique_models)}/{args.expected_models} seeds={len(expected_seeds)}/{len(expected_seeds)}")
     print(f"predictions={predicted_rows}/{expected_predictions} checkpoints_missing={missing_checkpoints}")

@@ -127,10 +127,7 @@ def prediction_shard_valid(path: Path, test_df: pd.DataFrame, *, activity: str, 
     if not path.is_file():
         return False
     try:
-        # Keep CSV fields as text during the integrity read. Pandas' numeric
-        # inference can segfault on otherwise valid prediction shards in the
-        # deployed pandas/numpy build; validate_prediction_frame performs the
-        # required numeric conversions and checks explicitly below.
+    # Read fields as text; validate_prediction_frame converts numeric fields.
         frame = pd.read_csv(path, dtype=str, keep_default_na=False)
         validate_prediction_frame(frame, test_df, activity=activity, source=source, model_key=model_key, seed=seed)
         return True

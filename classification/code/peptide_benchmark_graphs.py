@@ -1,13 +1,5 @@
 #!/usr/bin/env python3
-"""Corrected residue and atom graph models for the peptide benchmark.
-
-Residue graphs use only 23-dimensional residue node features and sequential
-bidirectional edges. Atom graphs use OGB categorical atom/bond encoders and
-edge-aware message passing at every layer.
-
-Class imbalance is handled only during training via BCEWithLogitsLoss(pos_weight),
-calculated from the source train split.
-"""
+"""Residue and atom graph benchmark models."""
 
 from __future__ import annotations
 
