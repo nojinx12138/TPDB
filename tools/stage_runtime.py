@@ -1,4 +1,4 @@
-"""Copy byte-identical core code into a new runtime workspace; no data copy."""
+"""Prepare a benchmark runtime workspace."""
 import argparse, hashlib, shutil
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
@@ -18,5 +18,5 @@ def main():
   dst.parent.mkdir(parents=True,exist_ok=True)
   if not dst.exists():shutil.copy2(file,dst)
   assert hashlib.sha256(dst.read_bytes()).digest()==hashlib.sha256(file.read_bytes()).digest()
- print('Code staged unchanged; data not copied:',code)
+ print('Runtime code directory:',code)
 if __name__=='__main__':main()

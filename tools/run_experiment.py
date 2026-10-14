@@ -1,4 +1,4 @@
-"""Portable argument-only launcher. Dry-run by default; never changes core code."""
+"""Launch classification and regression benchmark runs."""
 from __future__ import annotations
 import argparse, json, os, shlex, shutil, subprocess, sys
 from pathlib import Path
@@ -36,7 +36,7 @@ def main():
     p.add_argument('experiment',choices=['classification','regression','half-life-smiles'])
     p.add_argument('--dataset-root',type=Path,required=True);p.add_argument('--output-root',type=Path,required=True)
     p.add_argument('--group',choices=['all',*GROUPS],default='all');p.add_argument('--seeds',default='0,1,2,3,4')
-    p.add_argument('--gpu',help='One explicit CUDA_VISIBLE_DEVICES for this group. Otherwise historical group assignment.')
+    p.add_argument('--gpu',help='CUDA device index for this worker.')
     p.add_argument('--python',default=sys.executable);p.add_argument('--execute',action='store_true')
     a=p.parse_args();seeds=[int(x) for x in a.seeds.split(',')]
     if len(seeds)!=len(set(seeds)) or not set(seeds)<=set(range(5)):p.error('Seeds must be unique members of 0,1,2,3,4')

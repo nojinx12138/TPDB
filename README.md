@@ -4,7 +4,7 @@ Classification and regression benchmarks using similarity-controlled splits, 26 
 
 ## Data
 
-Download data from **https://tpdb.cc/downloads/**. Data, trained weights and full per-peptide predictions are not included in this repository.
+Download data from **https://tpdb.cc/downloads/**.
 
 Classification uses four negative-sampling schemes:
 
@@ -33,13 +33,13 @@ python tools/run_experiment.py classification --dataset-root /path/to/homology_3
 python tools/run_experiment.py regression --dataset-root /path/to/regression_similarity_controlled --output-root /path/to/new_regression_run
 ```
 
-These commands print the exact training commands. Add `--execute` to run. Use `--group tabular`, `deep_strings`, `pretrained_lm` or `graphs` for separate workers; `--gpu` selects the GPU. Outputs should use a new directory. Checkpoints retain the original best-validation saving/loading and resume behavior.
+These commands preview the run. Add `--execute` to start training. Use `--group tabular`, `deep_strings`, `pretrained_lm` or `graphs` to select a model group; `--gpu` selects the GPU.
 
-For the Half-life SMILES extension, use `half-life-smiles` instead of `regression`, with the derived Half-life SMILES input directory. `regression/half_life_smiles/code/prepare_half_life_smiles.py` preserves the original splits using RDKit FASTA-to-canonical-SMILES conversion; its `--help` lists the required finalized baseline project inputs. `tools/stage_runtime.py` stages code into a fresh runtime project when needed.
+Prepare Half-life SMILES inputs with `regression/half_life_smiles/code/prepare_half_life_smiles.py`, then use the `half-life-smiles` command. Run the preparation script with `--help` for its arguments. Use `tools/stage_runtime.py` to prepare a runtime project.
 
 ## Results
 
-`results/` contains five-seed summaries, rankings, MCC matrices and length-group AUC summaries. **GIN-atom** uses the edge-aware **GINE** implementation.
+`results/` contains five-seed summaries, rankings, MCC matrices and length-group AUC summaries.
 
 Result tables use **TR**, **PU**, **BI**, **MS**, with train–test combinations such as `MS_BI`. To export new run results with these names:
 
@@ -47,4 +47,4 @@ Result tables use **TR**, **PU**, **BI**, **MS**, with train–test combinations
 python tools/format_results.py /path/to/run/results --output-dir /path/to/manuscript_results
 ```
 
-`backbones.csv` lists the six frozen backbones, Hugging Face model/tokenizer IDs, available revisions, embedding dimensions and effective token limits. Obtain weights from `https://huggingface.co/{model_id}`; keep ProtBERT's `config.json`, `vocab.txt` and `pytorch_model.bin` together in its Hugging Face cache snapshot. PepDoRA is a DoRA adapter on `DeepChem/ChemBERTa-77M-MLM` (r=64, alpha=128, dropout=0.1, targets=query/key/value). All backbones are frozen and use attention-mask mean pooling. Only the downstream MLP is trained; its settings are in the training code.
+`backbones.csv` lists pretrained model IDs and input settings. Download weights from `https://huggingface.co/{model_id}`. For ProtBERT, cache `config.json`, `vocab.txt` and `pytorch_model.bin` together.

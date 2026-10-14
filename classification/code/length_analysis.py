@@ -323,7 +323,7 @@ def main() -> None:
     atomic_csv(validation, analysis / "length_analysis_validation_report.csv")
 
     print("Similarity split confirmed: homology_30 (not random split)")
-    print("Predictions source: normal test inference or checkpoint-only recovery; never retraining for analysis")
+    print("Prediction source: saved test predictions")
     print(f"coverage schemes={len(TEST_METHODS)}/3 activities={len(activities)}/{len(activities)} models={len(unique_models)}/{args.expected_models} seeds={len(expected_seeds)}/{len(expected_seeds)}")
     print(f"predictions={predicted_rows}/{expected_predictions} checkpoints_missing={missing_checkpoints}")
     print(f"single_class_rows={single_class_n} empty_group_rows={empty_group_n} out_of_range_samples={out_of_range_n}")
