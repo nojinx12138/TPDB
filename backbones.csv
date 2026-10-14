@@ -1,0 +1,7 @@
+model,model_id,revision,input,embedding_dim,max_tokens,tokenizer_id
+ESM2,facebook/esm2_t30_150M_UR50D,a695f6045e2e32885fa60af20c13cb35398ce30c,FASTA,640,1024,facebook/esm2_t30_150M_UR50D
+ProtBERT,Rostlab/prot_bert,7a894481acdc12202f0a415dd567f6cfdb698908,FASTA,1024,1024,Rostlab/prot_bert
+DPLM,airkingbd/dplm_150m,not_recorded,FASTA,640,1024,airkingbd/dplm_150m
+ChemBERTa,DeepChem/ChemBERTa-77M-MLM,ed8a5374f2024ec8da53760af91a33fb8f6a15ff,SMILES,384,513,DeepChem/ChemBERTa-77M-MLM
+PepDoRA,ChatterjeeLab/PepDoRA,e034544e8f2ab1c34fffcfd4984f4183db7f12ed,SMILES,384,513,DeepChem/ChemBERTa-77M-MLM
+PeptideCLM,aaronfeller/peptideclm-2-hybrid-large,04f9487683f5dcbcd528cd911d29ec0384307a05,SMILES,1024,768,aaronfeller/peptideclm-2-hybrid-large
